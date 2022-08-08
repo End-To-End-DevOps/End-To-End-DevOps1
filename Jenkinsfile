@@ -19,7 +19,7 @@ pipeline {
            }
         }
          
-        stage('Build docker image') {
+        /*stage('Build docker image') {
            steps {
                script {         
                  def customImage = docker.build('sibu2272/petclinic', "./docker")
@@ -28,6 +28,6 @@ pipeline {
                  }                     
            }
         }
-	  }
+	  }*/
     }
 }
