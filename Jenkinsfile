@@ -20,15 +20,15 @@ pipeline {
                  }
         }
          
-        /*stage('Build docker image') {
+        stage('Build docker image') {
            steps {
                script {         
-                 def customImage = docker.build('sibu2272/petclinic', "./docker")
+                 def customImage = docker.build('sibu2272/petclinicnew', "./docker")
                  docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                  customImage.push("${env.BUILD_NUMBER}")
                  }                     
            }
         }
-	  }*/
+	  }
     }
 }
