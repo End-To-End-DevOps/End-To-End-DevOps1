@@ -1,23 +1,23 @@
 pipeline {
   agent any
-    /*tools {
+    tools {
       maven 'Maven'
-                 jdk 'Java11'
-    }*/
+                 jdk 'Java9'
+    }
     stages {      
         stage('Build maven ') {
             steps { 
                     sh 'pwd'      
-                    sh 'ls -ltr'
+                    
                     sh 'mvn  clean install package'
-            }
+                  }
         }
         
         stage('Copy Artifact') {
            steps { 
                    sh 'pwd'
-		   sh 'cp -r target/*.jar docker'
-           }
+		               sh 'cp -r target/*.jar docker'
+                 }
         }
          
         /*stage('Build docker image') {
