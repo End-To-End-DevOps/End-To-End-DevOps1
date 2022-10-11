@@ -2,7 +2,7 @@ pipeline {
   agent any
     tools {
       maven 'Maven386'
-                 jdk 'Jdk8'
+      jdk 'Java17'
     }
     stages {      
         stage('Build maven ') {
