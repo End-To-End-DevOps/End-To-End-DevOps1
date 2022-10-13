@@ -1,9 +1,6 @@
 pipeline {
   agent any
-    tools {
-      maven 'Maven386'
-      
-    }
+    
     stages {      
         stage('Build maven ') {
             steps { 
