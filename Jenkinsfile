@@ -25,9 +25,10 @@ pipeline {
            steps {
                script { 
 		             sh 'cd docker'
-                 //def customImage = docker.build('sibu2272/petclinicnew')
-                 sh 'pwd'
-                 sh 'docker build sibu2272/petclinicnew .'
+                 def customImage = docker.build('sibu2272/petclinicnew', "./docker")
+                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                 customImage.push("${env.BUILD_NUMBER}")
+}
            }
         }
       }
