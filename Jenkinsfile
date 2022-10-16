@@ -28,6 +28,6 @@ pipeline {
                  def customImage = docker.build('sibu2272/petclinicnew'
            }
         }
-	  }
+      }
     }
 }
