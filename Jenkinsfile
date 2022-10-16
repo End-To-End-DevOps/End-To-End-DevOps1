@@ -25,9 +25,11 @@ pipeline {
            steps {
                script { 
 		             sh 'cd docker'
-                 def customImage = docker.build('sibu2272/petclinicnew')
+                 //def customImage = docker.build('sibu2272/petclinicnew')
+                 sh 'pwd'
+                 docker build sibu2272/petclinicnew
            }
         }
-	  }
+      }
     }
 }
