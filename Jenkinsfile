@@ -26,7 +26,7 @@ pipeline {
                script { 
 		 sh 'cd docker'
                  def customImage = docker.build('sibu2272/petclinicnew'
-           }
+           
         }
       }
     }
