@@ -11,6 +11,12 @@ pipeline {
                 withSonarQubeEnv(credentialsId: 'Sonar') {
                 sh 'mvn sonar:sonar'
             }
+               timeout(time: 1, unit: 'HOURS') {
+               df quality_gate = waitForQualityGate()
+                 if (quality_gate.status != OK){
+                  error "Pipeline aborted due to Quality gate failure: ${quality_gate.status}"
+                 }
+             }
               } 
               
                   }
@@ -31,7 +37,7 @@ pipeline {
                  }
         }
          
-        stage('Build docker image') {
+        stage('Build and push docker image to Registry') {
            steps {
                script { 
 		             sh 'cd docker'
