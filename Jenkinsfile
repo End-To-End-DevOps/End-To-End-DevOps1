@@ -5,6 +5,16 @@ pipeline {
       maven 'maven'
 }
     stages {      
+      stage('Sonar Quality Check') {
+            steps {
+              script{
+                withSonarQubeEnv(credentialsId: 'Sonar') {
+                sh 'mvn sonar:sonar'
+            }
+              } 
+              
+                  }
+        }
         stage('Build maven ') {
             steps { 
                     sh 'pwd'      
