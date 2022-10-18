@@ -11,7 +11,7 @@ pipeline {
      // calculate GIT lastest commit short-hash
 
                gitCommitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-               git rev-parse --short HEAD
+               //git rev-parse --short HEAD
                shortCommitHash = gitCommitHash.take(7)
             }
           }
