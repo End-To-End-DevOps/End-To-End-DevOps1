@@ -1,5 +1,9 @@
 pipeline {
   agent any
+    options {
+      buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '5')
+}
+  
     tools {
       //dockerTool 'Docker'
       maven 'maven'
