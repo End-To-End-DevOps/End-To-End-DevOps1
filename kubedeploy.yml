@@ -1,0 +1,44 @@
+#DeployUsingDeplomentMethod_RollingUpdate
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: petclinic
+spec:
+ #serviceAccountName: myAccount
+ replicas: 1
+ strategy:
+   type: RollingUpdate
+   rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1
+ minReadySeconds: 30
+ selector:
+   matchLabels:
+    app: demo
+ template:
+  metadata:
+   labels:
+    app: demo
+  spec:
+    containers:
+    - name: petclinic
+      image: sibu2272/petclinicnew
+      ports:
+      - containerPort: 8080
+
+
+---
+# Nodeport
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: demo
+  name: petclinic
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    name: demo
