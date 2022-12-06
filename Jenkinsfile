@@ -3,6 +3,9 @@ pipeline {
     options {
       buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '5')
 }
+	parameters {
+  credentials credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: 'dockerhub', description: 'Dockerhub Login Credentials ', name: 'docker hub', required: true
+}
   
     tools {
       //dockerTool 'Docker'
@@ -58,10 +61,10 @@ pipeline {
                script { 
 		             sh 'cd docker'
                  def customImage = docker.build('sibu2272/petclinicnew', "./docker")
-                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                 //docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                  customImage.push("${env.BUILD_NUMBER}")
 }
-           }
+           //}
         }
       }
     }
