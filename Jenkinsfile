@@ -24,7 +24,7 @@ pipeline {
           }
      }
          
-      */stage('Sonar Quality Check') {
+      /*stage('Sonar Quality Check') {
             steps {
               script{
                 withSonarQubeEnv(credentialsId: 'Sonar') {
@@ -39,7 +39,7 @@ pipeline {
               } 
               
                   }
-        }/*
+        }*/
         stage('Build maven ') {
             steps { 
                     sh 'pwd'      
